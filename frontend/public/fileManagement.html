@@ -1,0 +1,49 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Uploader</title>
+    <link rel="stylesheet" href="file.css">
+    <script src="https://kit.fontawesome.com/4917b7da97.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <input type="file" id="uploadBtn" onchange="handleFileUpload()">
+    <button id="metadataBtn" onclick="toggleMetadataForm()"><i class="fa-solid fa-plus fa-beat"></i>
+        <span style="margin-left: 8px;">Add Metadata</span>
+    </button>
+    <button type="button" id="updateMetadata" onclick="updtadeMetadata()"><i class="fa-solid fa-file-pen fa-beat"></i>
+        <span style="margin-left: 8px;">Update Metadata</span>
+    </button>
+    <button type="button" id="deleteBtn" onclick="deleteFile()"><i class="fa-solid fa-folder-minus"></i>
+        <span style="margin-left: 8px;">Delete File</span>
+    </button>
+    <button id="storeBtn" onclick="uploadFile()"><i class="fa-regular fa-paper-plane fa-beat-fade"></i></button>
+    <form id="metadataForm">
+        <div class="metadata-field" id="metadataField0">
+            <label for="fileId">File ID:</label>
+            <input type="text" id="fileId" name="fileId" value="unique id" readonly>
+            <label for="value">Value:</label>
+            <input type="text" id="value" name="value" required>
+        </div>
+        <button type="button" id="addMetadataBtn" onclick="addMetadata()"><i class="fa-solid fa-circle-plus fa-beat"></i>
+        </button>
+        <button type="button" id="confirmMetadataBtn" onclick="confirmMetadata()"><i class="fa-solid fa-check-double fa-beat"></i>
+            <span style="margin-left: 8px;">Confirm Metadata</span>
+        </button>
+    </form>
+
+    <div id="messageArea" class="message-area"></div>
+    <div id="yes-no-question" class="hidden">
+        <p>Would you like to overwrite the file ?</p>
+        <button onclick="overwrite()">Yes</button>
+        <button onclick="resetForm()">No</button>
+    </div>
+
+</div>
+
+<script src="fileManagement.js"></script>
+</body>
+</html>
