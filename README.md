@@ -74,7 +74,26 @@ and then:
 
 1- Open the folder 'frontend' in an IDE of your choice, we recommend WebStorm:
  Click of this link to download the WebStorm IDE:   https://www.jetbrains.com/webstorm/
+
+ 2- You need to install Node.js:
  
+ https://nodejs.org/en/download
+ <img width="1266" alt="image" src="https://github.com/etienne113/Chatbot/assets/96786848/4643ae60-1234-4e16-a655-bb370cd28896">
+ 
+ 3- Run these commands in your WebStorm Terminal:
+ 
+```shell
+  npm install serverless-dotenv-plugin --save-dev   
+```
+```shell
+    npm install express multer cors    
+```
+```shell
+  npm install form-data 
+```
+```shell
+  npm install axios
+```
 2- Now open the terminal down on the left corner and then paste this command:
 
 ```shell
