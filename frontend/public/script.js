@@ -13,12 +13,12 @@ const container = document.createElement('div');
                     <ul class="chatbox">
                         <li class="chat incoming">
                             <span class="material-symbols-outlined">psychology</span>
-                            <p>Hi there!<br>First of all, you need to choose your department 👇🏾</p>
+                            <p>Hi there!<br>First of all, you need to choose your orgunit 👇🏾</p>
                         </li>
                         <br>
                         <li class="chat incoming">
                             <span class="material-symbols-outlined">psychology</span>
-                            <p><input type="radio" name="options" id="Software engineering">  Software engineering <br><input type="radio" name="options" id="DevOps">  DevOps <br><input type="radio" name="options" id="Data Management"> Data Management <br><input type="radio" name="options" id="Personal Management"> Personal Management <br> <input type="radio" name="options" id="Project Management"> Project Management</p>
+                            <p><input type="radio" name="options" id="management">  Management <br><input type="radio" name="options" id="personal">  Personal </p>
                         </li>
                     </ul>
                     <div class="chat-input">
@@ -100,19 +100,24 @@ function notifyServerAboutNewTab(chatElement) {
         window.name = chatId;
     }
     const formData = new FormData();
-    const API_URL = 'http://localhost:3000/get-answer';
+    const API_URL = 'http://localhost:3000/get-answer'; // TODO : change the endpoint
     const messageElement = chatElement.querySelector('p');
 
     const loader = createLoader();
     chatbox.appendChild(loader);
     chatbox.scrollTo(0, chatbox.scrollHeight);
     formData.append('user_message', userMessage);
-    formData.append('department', selectedOption);
+    formData.append('orgunit', selectedOption);
     formData.append('mode', 'cors');
     formData.append('user_id', userId);
     formData.append('chatId', chatId);
 
     const requestOptions = {
+      /*  headers: {
+                'Content-Type': 'multipart/form-data',
+                "Authorization": `Bearer ${'BACKEND_ACCESS_API_KEY'}`,
+                'User_message': userMessage,
+            },*/
         method: 'POST',
         body: formData,
     };
