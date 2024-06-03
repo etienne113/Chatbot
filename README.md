@@ -89,7 +89,8 @@ and then:
     python app.py
 ```
 ## Hinweis:
-  You can execute the same commands in a terminal you don't necessarily have to download an IDE
+  You can execute the same commands in a terminal you don't necessarily have to download an IDE, 
+  you just have to make sure to be in the right folder front- or backend.
 ## Installation Frontend Service:
 
 1- Open the folder 'frontend' in an IDE of your choice, we recommend WebStorm:
