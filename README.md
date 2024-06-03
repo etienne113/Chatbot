@@ -86,7 +86,7 @@ or sometimes :
 ```
 and then: 
 ```shell
-    python api.py
+    python app.py
 ```
 ## Hinweis:
   You can execute the same commands in a terminal you don't necessarily have to download an IDE
