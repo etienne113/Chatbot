@@ -25,7 +25,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
             formData.append('allMetadata', JSON.stringify(allMetadataString));
 
             // Forward the file to the Flask server along with the filename
-            const response = await axios.post('http://127.0.0.1:8000/upload', formData, {
+            const response = await axios.post('http://127.0.0.1:5000/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     "Authorization": `Bearer ${api_Key}`,
@@ -50,7 +50,7 @@ app.post('/overwrite', upload.single('file'), async (req, res) => {
             formData.append('allMetadata', JSON.stringify(allMetadataString));
 
             // Forward the file to the Flask server along with the filename
-            const response = await axios.post('http://127.0.0.1:8000/overwrite', formData, {
+            const response = await axios.post('http://127.0.0.1:5000/overwrite', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     "Authorization": `Bearer ${api_Key}`,
@@ -70,7 +70,7 @@ try {
     const allMetadataString = req.body.allMetadata;
     const formData = new FormData();
     formData.append('allMetadata', JSON.stringify(allMetadataString))
-    const response = await axios.post('http://127.0.0.1:8000/update_metadata', formData, {
+    const response = await axios.post('http://127.0.0.1:5000/update_metadata', formData, {
         headers: {
             'Content-Type': 'multipart/form-data',
             "Authorization": `Bearer ${api_Key}`,
@@ -86,11 +86,10 @@ app.post('/delete-file',upload.single(''),async (req, res) => {
         const allMetadataString = req.body.allMetadata;
         const formData = new FormData();
         formData.append('allMetadata', JSON.stringify(allMetadataString))
-        const response = await axios.post('http://127.0.0.1:8000/overwrite', formData, {
+        const response = await axios.post('http://127.0.0.1:5000/delete_documents', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 "Authorization": `Bearer ${api_Key}`,
-                'Delete': 'true',
             },
         });
         res.json(response.data)
@@ -102,17 +101,17 @@ app.post('/get-answer', upload.single(''), async (req, res) => {
 
         const userId = req.body.user_id;
         const chatId = req.body.chatId;
-        const department = req.body.department;
+        const orgunit = req.body.orgunit;
         const mode = req.body.mode;
         let userMessage = req.body.user_message;
         const formData = new FormData();
         formData.append('user_message', userMessage);
-        formData.append('department', department);
+        formData.append('orgunit', orgunit);
         formData.append('mode', mode);
         formData.append('user_id', userId);
         formData.append('chatId', chatId);
     try {
-        const response = await axios.post('http://127.0.0.1:8000/get-answer', formData, {
+        const response = await axios.post('http://127.0.0.1:5000/answer', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 "Authorization": `Bearer ${api_Key}`,
@@ -125,9 +124,8 @@ app.post('/get-answer', upload.single(''), async (req, res) => {
 
 });
 
-// Serve the HTML file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'fileManagement.html'));
 });
 
 app.listen(port, () => {
