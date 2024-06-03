@@ -28,7 +28,7 @@ function addMetadata() {
     const value = valueInput.value.trim();
 
     if (value === '') {
-        showMessage('Please enter the value of the unique ID.', true);
+        showMessage('Please enter the value of the document id.', true);
         return false;
     } else {
         const existingIndex = allMetadata.findIndex(item => item.key === fileId);
@@ -80,7 +80,8 @@ function uploadFile() {
                     if (data.success) {
                         showMessage(data.success, false);
                     } else {
-                        if (data.error === 'Unique ID already exist!') {
+                        if (data.error === 'document id already exists!') {
+                            showYesNoQuestion();
                             showMessage(`Error: ${data.error}`, true);
                             showYesNoQuestion();
                         } else {
@@ -155,7 +156,7 @@ function updtadeMetadata(){
                 });
         }
         else {
-            showMessage('Add at least one metadata field in addition to the one with the unique id', true);
+            showMessage('Add at least one metadata field in addition to the one with the document id', true);
         }
     }
 
