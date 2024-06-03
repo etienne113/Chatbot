@@ -25,7 +25,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
             formData.append('allMetadata', JSON.stringify(allMetadataString));
 
             // Forward the file to the Flask server along with the filename
-            const response = await axios.post(' http://192.168.0.23:8000/upload', formData, {
+            const response = await axios.post('http://127.0.0.1:5000/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     "Authorization": `Bearer ${api_Key}`,
@@ -50,7 +50,7 @@ app.post('/overwrite', upload.single('file'), async (req, res) => {
             formData.append('allMetadata', JSON.stringify(allMetadataString));
 
             // Forward the file to the Flask server along with the filename
-            const response = await axios.post('h http://192.168.0.23:8000/overwrite', formData, {
+            const response = await axios.post('http://127.0.0.1:5000/overwrite', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     "Authorization": `Bearer ${api_Key}`,
@@ -70,7 +70,7 @@ try {
     const allMetadataString = req.body.allMetadata;
     const formData = new FormData();
     formData.append('allMetadata', JSON.stringify(allMetadataString))
-    const response = await axios.post(' http://192.168.0.23:8000/update_metadata', formData, {
+    const response = await axios.post('http://127.0.0.1:5000/update_metadata', formData, {
         headers: {
             'Content-Type': 'multipart/form-data',
             "Authorization": `Bearer ${api_Key}`,
@@ -86,7 +86,7 @@ app.post('/delete-file',upload.single(''),async (req, res) => {
         const allMetadataString = req.body.allMetadata;
         const formData = new FormData();
         formData.append('allMetadata', JSON.stringify(allMetadataString))
-        const response = await axios.post(' http://192.168.0.23:8000/delete_documents', formData, {
+        const response = await axios.post('http://127.0.0.1:5000/delete_documents', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 "Authorization": `Bearer ${api_Key}`,
@@ -111,7 +111,7 @@ app.post('/get-answer', upload.single(''), async (req, res) => {
         formData.append('user_id', userId);
         formData.append('chatId', chatId);
     try {
-        const response = await axios.post(' http://192.168.0.23:8000/answer', formData, {
+        const response = await axios.post('http://127.0.0.1:5000/answer', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
                 "Authorization": `Bearer ${api_Key}`,
