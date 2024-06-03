@@ -32,7 +32,7 @@ const container = document.createElement('div');
     // Create and append link elements for stylesheets
     const styleSheet1 = document.createElement('link');
     styleSheet1.rel = 'stylesheet';
-    styleSheet1.href = '/style.css';
+    styleSheet1.href = '/static/style.css';
     document.head.appendChild(styleSheet1);
 
     const styleSheet2 = document.createElement('link');
